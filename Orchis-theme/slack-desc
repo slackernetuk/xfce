@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+Orchis-theme: Orchis-theme ( Material Design theme ) 
+Orchis-theme:
+Orchis-theme: A Material Design theme for GNOME/GTK based desktop environments.
+Orchis-theme:
+Orchis-theme:
+Orchis-theme:
+Orchis-theme:
+Orchis-theme:
+Orchis-theme: https://github.com/vinceliuice/Orchis-theme.git
+Orchis-theme:
+Orchis-theme:

@@ -1,0 +1,8 @@
+PRGNAM="colord"
+VERSION="1.4.3"
+HOMEPAGE="https://www.freedesktop.org/software/colord"
+DOWNLOAD="https://www.freedesktop.org/software/colord/releases/colord-1.4.3.tar.xz"
+MD5SUM="f032ecac927e9078c41fff97800441e8"
+REQUIRES=""
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"

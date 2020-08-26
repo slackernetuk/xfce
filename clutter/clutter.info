@@ -1,0 +1,8 @@
+PRGNAM="clutter"
+VERSION="1.26.4"
+HOMEPAGE="https://github.com/GNOME/clutter"
+DOWNLOAD="ftp://ftp.gnome.org/pub/gnome/sources/clutter/1.26/clutter-1.26.4.tar.xz"
+MD5SUM="624dd776a5159de0267587b1df6b97b2"
+REQUIRES="cogl"
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"

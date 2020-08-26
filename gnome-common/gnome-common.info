@@ -1,0 +1,8 @@
+PRGNAM="gnome-common"
+VERSION="3.18.0"
+HOMEPAGE="https://www.gnome.org"
+DOWNLOAD="http://ftp.gnome.org/pub/GNOME/sources/gnome-common/3.18/gnome-common-3.18.0.tar.xz"
+MD5SUM="933258d9c23e218eb6eec9cc1951b053"
+REQUIRES=""
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"
