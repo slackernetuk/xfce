@@ -1,4 +1,4 @@
-Xfce 4.16+ for Slackware Linux
+<h1> Xfce 4.16+ for Slackware Linux </h1>
 
 ![2020-08-25-132048_1920x1080_scrot](https://user-images.githubusercontent.com/54255275/91256362-0fba5300-e75f-11ea-8939-b04168b3bd5c.png)
 
@@ -7,3 +7,17 @@ Xfce 4.16+ for Slackware Linux
 ![2020-08-26-062111_1920x1080_scrot](https://user-images.githubusercontent.com/54255275/91256203-a0dcfa00-e75e-11ea-9316-fe475f891da8.png)
 
 ![Screenshot_2020-08-26_06-27-47](https://user-images.githubusercontent.com/54255275/91256167-86a31c00-e75e-11ea-8d3a-6de29f1cf015.png)
+
+
+<h3>Development</h3>
+<hr>
+
+<p><b>master</b> is updated for Xfce-Git on Slackware Current</p>
+
+<p><b>stable</b> planned for Xfce-4.16 on Slackware Current</p>
+
+<p><b>oldstable</b> planned for Xfce-4.16 on Slackware 14.2</p>
+
+<hr>
+
+
