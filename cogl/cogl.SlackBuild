@@ -22,10 +22,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cogl
-VERSION=${VERSION:-1.22.6}
+VERSION=${VERSION:-1.22.8}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_snuk}
-SRCURL=http://ftp.gnome.org/pub/gnome/sources/cogl/1.22/cogl-1.22.6.tar.xz
+SRCURL=ftp://ftp.gnome.org/pub/gnome/sources/cogl/1.22/cogl-1.22.8.tar.xz
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i586 ;;
@@ -70,7 +70,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-zcat $CWD/cogl-1.22.6-mesa_20_fixes-1.patch.gz | patch -p1 || exit
+#zcat $CWD/cogl-1.22.6-mesa_20_fixes-1.patch.gz | patch -p1 || exit
 
 autoreconf 
 
