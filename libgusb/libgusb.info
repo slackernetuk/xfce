@@ -1,8 +1,0 @@
-PRGNAM="libgusb"
-VERSION="0.3.4"
-HOMEPAGE=""
-DOWNLOAD="https://people.freedesktop.org/~hughsient/releases/libgusb-0.3.4.tar.xz"
-MD5SUM="0f72fa5081f42fc798969027870eb384"
-REQUIRES=""
-MAINTAINER="Frank Honolka"
-EMAIL="slackernetuk@gmail.com"
