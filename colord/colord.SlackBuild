@@ -22,10 +22,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=colord
-VERSION=${VERSION:-1.4.3}
+VERSION=${VERSION:-1.4.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_snuk}
-SRCURL=https://www.freedesktop.org/software/colord/releases/colord-1.4.3.tar.xz
+SRCURL=https://www.freedesktop.org/software/colord/releases/colord-1.4.4.tar.xz
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -84,9 +84,8 @@ meson .. \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
-  --mandir=/usr/man \
-  --infodir=/usr/info \
   -Ddaemon_user=colord \
+  -Dman=false \
   -Dvapi=true \
   -Dsystemd=false \
   -Dlibcolordcompat=true \
@@ -103,8 +102,10 @@ cd ..
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
+if [ -d $PKG/usr/man ]; then
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+fi
 
 find $PKG -name perllocal.pod \
   -o -name ".packlist" \
