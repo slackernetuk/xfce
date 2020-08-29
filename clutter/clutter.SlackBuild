@@ -26,6 +26,7 @@ VERSION=${VERSION:-1.26.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_snuk}
 SRCURL=ftp://ftp.gnome.org/pub/gnome/sources/clutter/1.26/clutter-1.26.4.tar.xz
+
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i586 ;;

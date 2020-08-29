@@ -1,8 +1,0 @@
-PRGNAM="libgtop"
-VERSION="2.40.0"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
-DOWNLOAD="http://ftp.gnome.org/pub/gnome/sources/libgtop/2.40/libgtop-2.40.0.tar.xz"
-MD5SUM="c6d67325cd97b2208b41e07e6cc7b947"
-REQUIRES=""
-MAINTAINER="Frank Honolka"
-EMAIL="slackernetuk@gmail.com"

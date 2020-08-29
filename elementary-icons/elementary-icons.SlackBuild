@@ -59,8 +59,7 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-SRCNAM=icons
-rm -rf $SRCNAM-$VERSION
+rm -rf $PRGNAM-$VERSION
 wget -P $CWD $SRCURL
 tar xvf $CWD/5.3.1.tar.gz
 rm $CWD/5.3.1.tar.gz

@@ -26,6 +26,7 @@ VERSION=${VERSION:-0.5.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_snuk}
 SRCURL=https://launchpad.net/bamf/0.5/0.5.4/+download/bamf-0.5.4.tar.gz
+
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i586 ;;
@@ -70,10 +71,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-zcat $CWD/bamf-no-gtester2xunit.patch.gz | patch -p1 || exit
-zcat $CWD/bamf-no-werror.patch.gz | patch -p1 || exit
-
-NOCONFIGURE=1 ./autogen.sh
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -85,8 +82,6 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-introspection \
   --build=$ARCH-slackware-linux
-
-sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
 make
 make install DESTDIR=$PKG
@@ -100,15 +95,13 @@ find $PKG -name perllocal.pod \
   | xargs rm -f
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-
-DOCS="AUTHORS COPYING.LGPL COPYING ChangeLog INSTALL NEWS README TODO"  
+DOCS="AUTHORS COPYING ChangeLog NEWS README TODO"
 cp -a $DOCS $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
-
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

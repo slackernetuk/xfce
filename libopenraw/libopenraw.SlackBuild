@@ -1,31 +1,45 @@
 #!/bin/sh
 
 # Slackware build script for libopenraw
-# Copyright 2020 Frank Honolka <slackernetuk@gmail.com>
+# Copyright 2007-2011  Michiel van Wessem, Leicester, United Kingdom
+# Copyright 2019 B. Watson
 # All rights reserved.
 #
-# Redistribution and use of this script, with or without modification, is
-# permitted provided that the following conditions are met:
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
 #
-# 1. Redistributions of this script must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
+# * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
 #
-# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
-# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Now maintained by B. Watson <yalhcru@gmail.com>
+
+# 20191231 bkw:
+# - take over maintenance
+# - update for v0.1.3
+# - don't install useless INSTALL in doc dir
+# - install demo source in doc dir
+# - install tools/ordiag in /usr/bin
+# - --disable-static
+# - add doinst.sh with update-gdk-pixbuf-loaders
 
 PRGNAM=libopenraw
-VERSION=${VERSION:-0.2.3}
+VERSION=${VERSION:-0.1.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_snuk}
-SRCURL=https://libopenraw.freedesktop.org/download/libopenraw-0.2.3.tar.bz2
+SRCURL=http://libopenraw.freedesktop.org/download/libopenraw-0.1.3.tar.bz2
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -41,14 +55,14 @@ PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
 if [ "$ARCH" = "i586" ]; then
-  SLKCFLAGS="-O2 -march=i586 -mtune=i686"
-  LIBDIRSUFFIX=""
+    SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+    LIBDIRSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
-  SLKCFLAGS="-O2 -march=i686 -mtune=i686"
-  LIBDIRSUFFIX=""
+    SLKCFLAGS="-O2 -march=i686 -mtune=i686"
+    LIBDIRSUFFIX=""
 elif [ "$ARCH" = "x86_64" ]; then
-  SLKCFLAGS="-O2 -fPIC"
-  LIBDIRSUFFIX="64"
+    SLKCFLAGS="-O2 -fPIC"
+    LIBDIRSUFFIX="64"
 else
   SLKCFLAGS="-O2"
   LIBDIRSUFFIX=""
@@ -61,51 +75,51 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 wget -P $CWD $SRCURL
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar -xvf $CWD/$PRGNAM-$VERSION.tar.bz2
 rm $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
-find -L . \
- \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \; -o \
- \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
- -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \
+        \! -perm /111 -a \! -perm 644 -a -exec chmod 644 {} \+
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
+  --disable-static \
+  --enable-shared \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
-  --infodir=/usr/info \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make
-make install DESTDIR=$PKG
+make V=1
+make install-strip DESTDIR=$PKG
 
-find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
-  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+# for whatever reason, upstream v0.0.9 calls itself v1.0 in pkg-config,
+# but v0.1.3 calls itself v0.1. this causes raw-thumbnailer builds to
+# fail. use symlinks as a workaround.
+cd $PKG/usr/lib$LIBDIRSUFFIX/pkgconfig
+for i in $PRGNAM $PRGNAM-gnome; do
+  [ -e $i-0.1.pc ] && ln -s $i-0.1.pc $i-1.0.pc
+done
+cd -
 
-if [ -d $PKG/usr/man ]; then
-find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
-fi
+# this looks useful
+mkdir -p $PKG/usr/bin
+install -s -m0755 -oroot -groot tools/.libs/ordiag $PKG/usr/bin
 
-find $PKG -name perllocal.pod \
-  -o -name ".packlist" \
-  -o -name "*.bs" \
-  | xargs rm -f
-
-mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-DOCS="AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README TODO" 
-cp -a $DOCS $PKG/usr/doc/$PRGNAM-$VERSION
+# the demos are example code, install just the sources.
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/demo
+cp -a AUTHORS COPYING* ChangeLog NEWS README TODO $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a demo/*.c demo/*.cpp $PKG/usr/doc/$PRGNAM-$VERSION/demo
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

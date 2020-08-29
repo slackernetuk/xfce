@@ -107,5 +107,5 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
-/sbin/upgradepkg --install-new --reinstall $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION$GIT-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/upgradepkg --install-new --reinstall $OUTPUT/$PRGNAM-$VERSION$GIT-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
