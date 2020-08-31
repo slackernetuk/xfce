@@ -1,0 +1,2 @@
+# slackonly, ktown
+REQUIRES="qt5-webkit, jack, x264, lame, frei0r, ladspa_sdk, mlt, SDL2,libx264, ffmpeg, libdv, libquicktime qt5, ladspa_sdk, frei0r, swfdec, jack-rack" 
