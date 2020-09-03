@@ -39,6 +39,9 @@ xfce4-screensaver \
 xfce4-screenshooter \
 xfce4-notifyd \
 xiccd \
+extra-cmake-modules \
+kwindowsystem \
+Kvantum \
 cantarell-fonts \
 elementary-icons \
 urutau-icons \
