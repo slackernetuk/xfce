@@ -1,0 +1,8 @@
+PRGNAM="geocode-glib"
+VERSION="3.26.2"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/geocode-glib"
+DOWNLOAD="http://ftp.gnome.org/pub/gnome/sources/geocode-glib/3.26/geocode-glib-3.26.2.tar.xz"
+MD5SUM="e1ef140a11a543643d170dc701009e39"
+REQUIRES=""
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"
