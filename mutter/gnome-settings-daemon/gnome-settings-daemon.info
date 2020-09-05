@@ -1,0 +1,8 @@
+PRGNAM="gnome-settings-daemon"
+VERSION="3.36.1"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-settings-daemon""
+DOWNLOAD="http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.36/gnome-settings-daemon-3.36.1.tar.xz"
+MD5SUM="102dc488a6a726e4050cf5ab7e967e8d"
+REQUIRES=""
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"
