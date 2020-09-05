@@ -1,0 +1,40 @@
+# WARNING WARNING WARNING
+
+Remove ConsoleKit2 before installing elogind
+
+  root> removepkg ConsoleKit2
+
+Remember to reinstall ConsoleKit2 if you uninstall elogind.
+
+# PAM
+
+To use elogind you will need to *MODIFIED* slackware default PAM configuration,
+
+file: /etc/pam.d/system-auth
+
+With the session lines from elogind system-auth template
+
+file: /usr/share/factory/etc/pam.d/system-auth
+
+But in my small knowledge, adding just one line like below at the bottom
+of /etc/pam.d/system-auth is sufficient:
+
+-session    optional     pam_elogind.so
+
+If you have a trouble logging in from remote (ie. remote SSH) because
+of login session tracking then you can add pam_elogind.so to /etc/pam.d/login
+instead of global system-auth. That way elogind will only tracking local
+login and excludes tracking remote login.
+
+
+Edit rc.M's dbus invocation likeso:
+
+# === file: /etc/rc.d/rc.M ===
+# Start D-Bus:
+# mkdir -p /run/elogind /sys/fs/cgroup/elogind /run/user
+# ( cd /run; rm -rf systemd; ln -sf elogind systemd; )
+# ( cd /sys/fs/cgroup; rm -rf systemd; ln -sf elogind systemd; )
+# if [ -x /etc/rc.d/rc.messagebus ]; then
+#   /etc/rc.d/rc.messagebus start
+# fi
+
