@@ -1,0 +1,8 @@
+PRGNAM="pipewire"
+VERSION="0.3.10"
+HOMEPAGE="https://pipewire.org"
+DOWNLOAD="https://github.com/PipeWire/pipewire/archive/0.3.10/pipewire-0.3.10.tar.gz"
+MD5SUM="b72692c2d7a905abf50fcfe38937b4df"
+REQUIRES=""
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"
