@@ -1,0 +1,8 @@
+PRGNAM="gnome-desktop"
+VERSION="3.36.5"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop"
+DOWNLOAD="http://ftp.gnome.org/pub/gnome/sources/gnome-desktop/3.36/gnome-desktop-3.36.5.tar.xz"
+MD5SUM="6bc3193acb3a68a56930aa05f8bec6a4"
+REQUIRES="bubblewrap libseccomp"
+MAINTAINER="Frank Honolka"
+EMAIL="slackernetuk@gmail.com"
