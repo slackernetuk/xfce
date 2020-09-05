@@ -142,7 +142,7 @@ sed "s,@LIBDIRSUFFIX@,${LIBDIRSUFFIX},g" $CWD/rc.elogind > \
 chmod 755 $PKG/etc/rc.d/rc.elogind.new
 # install rc.M dbus
 install -m755 $CWD/rc.M /etc/rc.d/rc.M
-# install system system-auth
+# install system
 mkdir -p $PKG/etc/pam.d || exit 1
 install -m755 $CWD/system-auth $PKG/etc/pam.d/system-auth || exit 1
 # Preserve old config
