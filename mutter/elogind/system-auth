@@ -64,6 +64,7 @@ password    required      pam_deny.so
 #
 session     required      pam_limits.so
 session     required      pam_unix.so
-#session     required      pam_lastlog.so showfailed
-#session     optional      pam_mail.so standard
--session     optional      pam_gnome_keyring.so auto_start
+#session    required      pam_lastlog.so showfailed
+#session    optional      pam_mail.so standard
+-session    optional      pam_gnome_keyring.so auto_start
+-session    optional      pam_elogind.so

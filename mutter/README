@@ -1,0 +1,5 @@
+1. You need to uninstall ConsoleKit2
+2. install elogind and take a reboot
+3. just a simple sudo ./build.sh or as root
+
+enjoy
