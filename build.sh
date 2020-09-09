@@ -9,6 +9,7 @@ libwnck3 \
 libgusb \
 gnome-common \
 bamf \
+gimp-data-extras \
 colord \
 cogl \
 clutter \
