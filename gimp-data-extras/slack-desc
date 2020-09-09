@@ -1,0 +1,18 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                |-----handy-ruler------------------------------------------------------|
+gimp-data-extras: gimp-data-extras (collection of additional data files for GIMP 2.10)
+gimp-data-extras:
+gimp-data-extras: This is a collection of additional data files for GIMP 2.10.
+gimp-data-extras: It adds a couple of brushes and patterns to the set of files
+gimp-data-extras: that are already shipped with the GIMP tarball.
+gimp-data-extras: It also contains scripts that have been removed during v2.10
+gimp-data-extras: development cycle.
+gimp-data-extras:
+gimp-data-extras: https://www.gimp.org/
+gimp-data-extras:
