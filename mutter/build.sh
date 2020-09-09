@@ -8,7 +8,7 @@ for i in \
 	geocode-glib \
 	libgweather \
 	geoclue2 \
-	gnome-settings-manager \
+	gnome-settings-daemon \
 	pipewire \
 	mutter \
 ; do 
