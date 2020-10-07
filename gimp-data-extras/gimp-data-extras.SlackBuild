@@ -58,7 +58,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-wget -P $CWD $SRCURL
+wget -P $CWD $SRCURL || exit 1
 tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
 rm $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
