@@ -44,8 +44,7 @@ extra-cmake-modules \
 kwindowsystem \
 Kvantum \
 cantarell-fonts \
-elementary-icons \
-urutau-icons \
+Tela-icon-theme \
 Orchis-theme \
 adwaita-dark-compact-xfwm4 \
 ; do
