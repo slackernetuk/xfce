@@ -44,7 +44,7 @@ extra-cmake-modules \
 kwindowsystem \
 Kvantum \
 cantarell-fonts \
-Tela-icon-theme \
+adwaita-plus \
 Orchis-theme \
 ; do
 cd $package || exit 1
